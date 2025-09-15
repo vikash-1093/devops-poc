@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-poc
+  labels:
+    app: devops-poc
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: devops-poc
+  template:
+    metadata:
+      labels:
+        app: devops-poc
+    spec:
+      containers:
+        - name: app
+          image: devops-poc:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5000
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 5000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 5000
+            initialDelaySeconds: 15
+            periodSeconds: 20
