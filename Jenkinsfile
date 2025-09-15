@@ -1,5 +1,6 @@
 pipeline {
-  agent { label 'docker-kind' }
+  //agent { label 'docker-kind' }
+  agent any
   environment {
     IMAGE_REPO    = "devops-poc"
     CLUSTER_NAME  = "devops-lab"
