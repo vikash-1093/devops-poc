@@ -3,7 +3,7 @@ pipeline {
   environment {
     IMAGE_REPO  = "devops-poc"
     CLUSTER_NAME = "devops-lab"
-    GIT_CRED_ID = "github-pat-devops-poc" // Jenkins credential ID for PAT
+    GIT_CRED_ID = "github-app-password" // Jenkins credential ID for PAT
   }
 
   stages {
